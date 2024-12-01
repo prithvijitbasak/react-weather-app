@@ -54,10 +54,10 @@ npm install
 npm run dev
 ```
 
-I have changed the build script so to build the project do this :-
+To deploy the project :-
 
 ```
-npm run deploy
+npm run build
 ```
 
 ## Tech stacks used
