@@ -24,7 +24,7 @@ The goal was to create a user-friendly interface that provides accurate weather 
   User-friendly error messages for invalid inputs.
 
 ### __Live Link__
-https://tourmaline-tarsier-67f0e2.netlify.app/
+https://pb-react-weather-app.netlify.app/
 
 ## Installation Guides
 
