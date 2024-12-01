@@ -31,13 +31,13 @@ Clone and run the project using the below scripts in terminal step by step :-
 md react-weather-app
 ```
 ```
-cd user-info-table
+cd react-weather-app
 ```
 ```
-git clone https://github.com/prithvijitbasak/react-user-table.git
+git clone https://github.com/prithvijitbasak/react-weather-app.git
 ```
 ```
-npm start
+npm create vite@latest .
 ```
 
 I have changed the build script so to build the project do this :- 
