@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="pb-container">
           <div className="footer-contents">
             <p className="footer-text">
-              Designed and Developer by{" "}
+              Designed and Developed by{" "}
               <a href="https://prithvijitbasak.netlify.app/" target="blank" className="name-text">
                 Prithvijit Basak
               </a>
