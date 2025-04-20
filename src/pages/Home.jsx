@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../assets/styles/Home.css";
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/logo-updated.jpg";
 import cloudy from "../assets/images/Cloudy.png";
 import tempMax from "../assets/images/temp max.png";
 import tempMin from "../assets/images/temp min.png";
@@ -9,16 +9,20 @@ import cloudyDetails from "../assets/images/cloudy details.png";
 import wind from "../assets/images/wind.png";
 import search from "../assets/images/fa_search.png";
 import countryList from "../assets/json/countryCodes.json";
+import Footer from "../components/Footer";
 
 const Home = () => {
   const [weatherData, setWeatherData] = useState(null);
-  const [city, setCity] = useState("Kolkata"); // Default city
+  const [city, setCity] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isCelsius, setIsCelsius] = useState(true);
 
   const API_URL = import.meta.env.VITE_SECRET_API_URL;
   const API_KEY = import.meta.env.VITE_SECRET_API_KEY;
+
+  // Default city to load when component mounts
+  const DEFAULT_CITY = "Kolkata";
 
   const fetchWeather = async (cityName) => {
     setLoading(true);
@@ -42,30 +46,33 @@ const Home = () => {
   };
 
   useEffect(() => {
-    fetchWeather(city);
-  }, [city]);
+    fetchWeather(DEFAULT_CITY);
+  }, []);
 
   const handleSearch = (e) => {
-    if (e.key === "Enter") {
-      fetchWeather(city);
+    if (!e || (e && e.key === "Enter")) {
+      const searchCity = city.trim() === "" ? DEFAULT_CITY : city.trim();
+      fetchWeather(searchCity);
     }
   };
 
-  // Helper function to convert Celsius to Fahrenheit
-  const convertToFahrenheit = (tempInCelsius) => (tempInCelsius * 9) / 5 + 32;
+  // Celsius to Fahrenheit converter
+  const convertToFahrenheit = (tempInCelsius) =>
+    (tempInCelsius * 9) / 5 + 32;
 
-  // Helper function to determine displayed temperature based on unit
+  // Return temperature based on current unit
   const getDisplayedTemp = (temp) =>
     isCelsius ? Math.round(temp) : Math.round(convertToFahrenheit(temp));
 
-  // Toggle function for the button
+  // Toggle Celsius/Fahrenheit
   const toggleTemperatureUnit = () => {
     setIsCelsius(!isCelsius);
   };
 
+  // Convert country code to country name
   const getCountryName = (code) => {
     const country = countryList.find((item) => item.countryCode === code);
-    return country ? country.countryName : code; // Fallback to the code if not found
+    return country ? country.countryName : code;
   };
 
   return (
@@ -96,12 +103,10 @@ const Home = () => {
             <div className="loading-location-div">
               {loading && <p className="green-text">Loading...</p>}
               {error && (
-                <>
-                  <div className="red-text">
-                    <p>Error: {error}</p>
-                    <p>Here is the weather of last city entered!!!!</p>
-                  </div>
-                </>
+                <div className="red-text">
+                  <p>Error: {error}</p>
+                  <p>Here is the weather of last city entered!!!!</p>
+                </div>
               )}
             </div>
             <div className="location-and-details-div">
@@ -132,7 +137,7 @@ const Home = () => {
                         <p>{getCountryName(weatherData.sys.country)}</p>
                       </div>
                       <img
-                        src={cloudy} // Placeholder, replace with a dynamic icon if needed
+                        src={cloudy}
                         alt={weatherData.weather[0].description}
                       />
                     </div>
@@ -195,6 +200,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 };
