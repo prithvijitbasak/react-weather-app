@@ -1,0 +1,41 @@
+.footer-wrapper {
+  padding: 40px 0;
+  background-image: url("../images/bg-weather.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.footer-wrapper::before {
+  content: unset;
+  position: absolute;
+  background-color: rgba(0,0,0,0.5);
+  height: 100%;
+  width: 100%;
+}
+
+.footer-contents {
+  text-align: center;
+  backdrop-filter: blur(16px);
+  padding: 20px 0;
+  position: relative;
+  z-index: 1;
+  border-radius: 15px;
+}
+
+.footer-text {
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.name-text {
+  color: #ffffff;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 767px) {
+  .footer-text {
+    font-size: 14px;
+  }
+}

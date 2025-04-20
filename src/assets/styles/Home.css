@@ -50,10 +50,16 @@
   display: contents;
 }
 
+.logo-text {
+  color: #ffffff;
+  font-size: 20px;
+}
+
 .logo-search-bar-div img {
   display: block;
   object-fit: contain;
   cursor: pointer;
+  border-radius: 15px;
 }
 
 .logo-search-bar-div .input-div {
@@ -188,8 +194,11 @@
 }
 
 @media (max-width: 980px) {
+  .pb-weather-app-wrapper {
+    height: auto;
+  }
   .logo-search-bar-div img {
-    width: 25%;
+    width: 15%;
   }
   .logo-search-bar-div .input-div {
     width: 38%;
@@ -242,7 +251,7 @@
     display: block;
   }
   .logo-search-bar-div img {
-    width: 45%;
+    width: 20%;
     margin: 0 auto;
   }
   .loading-location-div p {
